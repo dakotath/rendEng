@@ -47,6 +47,102 @@ void ClearScreen(Display disp)
 
 #endif
 
+// terminal
+#ifdef VIDEO_TERMINAL
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+// linux specific includes
+#ifdef BUILD_LINUX
+#include <malloc.h>
+#include <memory.h>
+#endif
+// end of linux specific includes
+
+#include "video.h"
+#include "threading.h"
+
+void ProbeEvents(Display disp) {
+    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
+}
+
+Display InitVideo(int width, int height) {
+    Display disp;
+
+    // Set parameters for the terminal display.
+    disp.width = width;
+    disp.height = height;
+    disp.window = NULL; // Not used in the terminal implementation
+    disp.renderer = NULL; // Not used in the terminal implementation
+
+    // Initialize the terminal display.
+    char* framebuffer = (char*)malloc(width * height * sizeof(char));
+    memset(framebuffer, ' ', width * height);
+
+    // Return the framebuffer as a void pointer
+    disp.renderer = (void*)framebuffer;
+
+    return disp;
+}
+
+void QuitVideo(Display disp) {
+    // Free the framebuffer memory
+    free(disp.renderer);
+}
+
+void DrawRect(Display disp, int x, int y, int width, int height, int r, int g, int b, bool fill) {
+    // Implement text-based rendering of rectangles in the terminal.
+    char* framebuffer = (char*)disp.renderer;
+    char fillChar = fill ? '#' : ' ';
+
+    for (int i = x; i < x + width; i++) {
+        for (int j = y; j < y + height; j++) {
+            if (i >= 0 && i < disp.width && j >= 0 && j < disp.height) {
+                framebuffer[i + j * disp.width] = fillChar;
+            }
+        }
+    }
+}
+
+void RenderScreen(Display disp) {
+    // Clear the terminal and render the framebuffer.
+    system("clear");
+    char* framebuffer = (char*)disp.renderer;
+
+    for (int i = 0; i < disp.height; i++) {
+        for (int j = 0; j < disp.width; j++) {
+            putchar(framebuffer[j + i * disp.width]);
+        }
+        putchar('\n');
+    }
+}
+
+void DrawCircle(Display disp, int x, int y, int rad, Uint8 r, Uint8 g, Uint8 b, bool fill) {
+    // Implement text-based rendering of circles in the terminal.
+    char* framebuffer = (char*)disp.renderer;
+    char fillChar = fill ? '#' : ' ';
+
+    for (int i = x - rad; i <= x + rad; i++) {
+        for (int j = y - rad; j <= y + rad; j++) {
+            if (i >= 0 && i < disp.width && j >= 0 && j < disp.height) {
+                int dx = i - x;
+                int dy = j - y;
+                if (dx * dx + dy * dy <= rad * rad) {
+                    framebuffer[i + j * disp.width] = fillChar;
+                }
+            }
+        }
+    }
+}
+
+void ClearScreen(Display disp) {
+    // Clear the framebuffer and display.
+    char* framebuffer = (char*)disp.renderer;
+    memset(framebuffer, ' ', disp.width * disp.height);
+}
+
 // SDL2.
 #ifdef VIDEO_SDL2
 
@@ -233,6 +329,8 @@ void ClearScreen(Display disp) {
     SDL_SetRenderDrawColor(disp.renderer, 0, 0, 0, 255);
     SDL_RenderClear(disp.renderer);
 }
+
+#endif
 
 #endif
 

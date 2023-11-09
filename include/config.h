@@ -24,7 +24,8 @@
 // config for different functions
 #define USE_THREADING
 #define USE_VIDEO
-#define VIDEO_SDL2
+//#define VIDEO_SDL2
+#define VIDEO_TERMINAL
 //#define VIDEO_DUMMY
 
 #endif

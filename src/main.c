@@ -29,9 +29,9 @@ ThreadFunction mainThread(ThreadParams params) {
 }
 
 ThreadFunction rendererThread(ThreadParams params) {
-    int ballX = 64;
-    int ballY = 128;
-    int ballRadius = 20;
+    int ballX = 2;
+    int ballY = 3;
+    int ballRadius = 3;
     int ballSpeedX = 3;
     int ballSpeedY = 2;
 
@@ -74,8 +74,8 @@ int main(int argc, char** argv) {
     printCoreInfo();
 
     // init video
-    int screenW = 320;
-    int screenH = 240;
+    int screenW = 100;
+    int screenH = 100;
     disp = InitVideo(screenW, screenH);
 
     // setup thread infos
