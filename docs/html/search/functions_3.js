@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quitvideo_0',['QuitVideo',['../video_8c.html#af90fe60f50246880ddadb8984f279fa4',1,'video.c']]]
+  ['printcoreinfo_0',['printCoreInfo',['../utils_8c.html#af65331145cf15fccb1c18050e78a45cc',1,'utils.c']]]
 ];

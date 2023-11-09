@@ -1,33 +1,36 @@
-\hypertarget{config_8h_source}{}\doxysection{config.\+h}
-\label{config_8h_source}\index{include/config.h@{include/config.h}}
+\doxysection{config.\+h}
+\hypertarget{config_8h_source}{}\label{config_8h_source}\index{include/config.h@{include/config.h}}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{comment}{// configuration for this code}}
-\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef CONFIG\_H}}
-\DoxyCodeLine{3 \textcolor{preprocessor}{\#define CONFIG\_H}}
-\DoxyCodeLine{4 }
-\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifdef \_\_i386\_\_}}
-\DoxyCodeLine{6 \textcolor{keyword}{const} \textcolor{keywordtype}{char}* TARGET = \textcolor{stringliteral}{"{}x86 (32-\/bit)"{}};}
-\DoxyCodeLine{7 \textcolor{preprocessor}{\#elif defined(\_\_x86\_64\_\_)}}
-\DoxyCodeLine{8 \textcolor{keyword}{const} \textcolor{keywordtype}{char}* TARGET = \textcolor{stringliteral}{"{}x86\_64 (64-\/bit)"{}};}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#elif defined(\_\_powerpc\_\_)}}
-\DoxyCodeLine{10 \textcolor{keyword}{const} \textcolor{keywordtype}{char}* TARGET = \textcolor{stringliteral}{"{}PowerPC"{}};}
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#elif defined(\_\_mips\_\_)}}
-\DoxyCodeLine{12 \textcolor{keyword}{const} \textcolor{keywordtype}{char}* TARGET = \textcolor{stringliteral}{"{}MIPS"{}};}
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{14 \textcolor{keyword}{const} \textcolor{keywordtype}{char}* TARGET = \textcolor{stringliteral}{"{}Unknown or unsupported target architecture"{}};}
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{16 }
-\DoxyCodeLine{17 \textcolor{comment}{// Version}}
-\DoxyCodeLine{18 \textcolor{preprocessor}{\#define VERSION "{}CoreRend Version 1.0.0"{}}}
-\DoxyCodeLine{19 }
-\DoxyCodeLine{20 \textcolor{preprocessor}{\#define BUILD\_LINUX }\textcolor{comment}{// build for LINUX}}
-\DoxyCodeLine{21 }
-\DoxyCodeLine{22 \textcolor{comment}{// config for different functions}}
-\DoxyCodeLine{23 \textcolor{preprocessor}{\#define USE\_THREADING}}
-\DoxyCodeLine{24 \textcolor{preprocessor}{\#define USE\_VIDEO}}
-\DoxyCodeLine{25 \textcolor{preprocessor}{\#define VIDEO\_SDL2}}
-\DoxyCodeLine{26 }
-\DoxyCodeLine{27 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ configuration\ for\ this\ code}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ CONFIG\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ CONFIG\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ arch}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifdef\ \_\_i386\_\_}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ TARGET\ "{}x86\ (32-\/bit)"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#elif\ defined(\_\_x86\_64\_\_)}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ TARGET\ "{}x86\_64\ (64-\/bit)"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#elif\ defined(\_\_powerpc\_\_)}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ TARGET\ "{}PowerPC"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#elif\ defined(\_\_mips\_\_)}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ TARGET\ "{}MIPS"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ TARGET\ "{}Unknown\ or\ unsupported\ target\ architecture"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ Version}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ VERSION\ "{}CoreRend\ Version\ 1.0.0"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ BUILD\_LINUX\ }\textcolor{comment}{//\ build\ for\ LINUX}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\#define\ BUILD\_MINGW\ //\ build\ for\ LINUX}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ config\ for\ different\ functions}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ USE\_THREADING}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ USE\_VIDEO}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ VIDEO\_SDL2}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//\#define\ VIDEO\_DUMMY}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

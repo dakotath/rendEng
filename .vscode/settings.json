@@ -4,6 +4,9 @@
         "threading.h": "c",
         "functional": "c",
         "stdio.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "video.h": "c",
+        "sdl.h": "c",
+        "stdbool.h": "c"
     }
 }

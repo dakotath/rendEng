@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['waitforthread_0',['WaitForThread',['../threading_8c.html#aabb5c0887cb42caf305f944bd523cf9e',1,'threading.c']]]
+  ['quit_20sdl2_0',['Function to clean up and quit SDL2.',['../video_8c.html#p1awd',1,'']]],
+  ['quitvideo_1',['QuitVideo',['../video_8c.html#af90fe60f50246880ddadb8984f279fa4',1,'video.c']]]
 ];

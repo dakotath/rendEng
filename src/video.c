@@ -2,6 +2,8 @@
  * @file video.c
  * 
  * All 2D rendering handlers.
+ * 
+ * @todo Add support to draw standard image types (png,jpg,bmp, and so on).
  */
 
 #include "config.h"
@@ -9,8 +11,41 @@
 // Only compile if USE_VIDEO defined.
 #ifdef USE_VIDEO
 
-// Linux Video.
-#ifdef BUILD_LINUX
+#ifdef VIDEO_DUMMY // blank handlers, when porting to other systems, all of these must be present for the other systems.
+
+#include <stdio.h>
+#include <stdbool.h>
+#include "video.h"
+#include "threading.h"
+
+// Declare global variables for the window and renderer
+void ProbeEvents(Display disp)
+{
+    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
+}
+Display InitVideo(int width, int height) {
+    Display disp;
+    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
+    return disp;
+}
+void QuitVideo(Display disp) {
+    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
+}
+void DrawRect(Display disp, int x, int y, int width, int height, int r, int g, int b, bool fill) {
+    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
+}
+void RenderScreen(Display disp) {
+    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
+}
+void DrawCircle(Display disp, int x, int y, int rad, Uint8 r, Uint8 g, Uint8 b, bool fill) {
+    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
+}
+void ClearScreen(Display disp)
+{
+    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
+}
+
+#endif
 
 // SDL2.
 #ifdef VIDEO_SDL2
@@ -36,15 +71,17 @@ void ProbeEvents(Display disp)
 
 /**
  * @brief Init Video.
- * @image html doc_img/sdl_test1.png "SDL2 Working"
  * 
- * @paragraph p1 Function to initialize SDL2 and create a window and renderer.
+ * @paragraph p1ff Function to initialize SDL2 and create a window and renderer.
  * 
  * @param width Screen Width.
  * @param height Screen Height.
 */
 Display InitVideo(int width, int height) {
     Display disp;
+
+    disp.width=width;
+    disp.height=height;
 
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         printf("SDL_Init failed: %s\n", SDL_GetError());
@@ -76,7 +113,7 @@ Display InitVideo(int width, int height) {
 /**
  * @brief Quit Video.
  * 
- * @paragraph p1 Function to clean up and quit SDL2.
+ * @paragraph p1awd Function to clean up and quit SDL2.
 */
 void QuitVideo(Display disp) {
     if (disp.renderer != NULL) {
@@ -95,7 +132,9 @@ void QuitVideo(Display disp) {
 /**
  * @brief Draw Rectangles.
  * 
- * @paragraph p1 Function to draw a cool rectangle with SDL2.
+ * @image html doc_img/sdl_test1.png "A simple white square."
+ * 
+ * @paragraph p1ert Function to draw a cool rectangle with SDL2.
  * 
  * @param x X Position of your Rectangle.
  * @param y Y Position of your Rectangle.
@@ -123,43 +162,77 @@ void DrawRect(Display disp, int x, int y, int width, int height, Uint8 r, Uint8 
 }
 
 /**
+ * @brief Draw A Circle.
+ * 
+ * @image html doc_img/circ_test1.png "A simple blue filled circle."
+ * 
+ * @paragraph drawCircp1 if you like the cool round shape called a Circle, use this to draw some!
+ * 
+ * @param x X position of your circle.
+ * @param y Y position of your circle.
+ * @param rad Radius for your circle.
+ * 
+ * @param r Red Amount (0-255).
+ * @param g Green Amount (0-255).
+ * @param b Blue Amount (0-255).
+ * 
+ * @param fill fill your circle.
+*/
+void DrawCircle(Display disp, int x, int y, int rad, Uint8 r, Uint8 g, Uint8 b, bool fill) {
+    SDL_SetRenderDrawColor(disp.renderer, r, g, b, 255);
+    if (fill) {
+        for (int i = 0; i <= rad; i++) {
+            int h = sqrt(rad * rad - i * i);
+            SDL_RenderDrawLine(disp.renderer, x - h, y + i, x + h, y + i);
+            SDL_RenderDrawLine(disp.renderer, x - h, y - i, x + h, y - i);
+        }
+    } else {
+        int cx = rad;
+        int cy = 0;
+        int error = 1 - rad;
+
+        while (cx >= cy) {
+            SDL_RenderDrawPoint(disp.renderer, x + cx, y + cy);
+            SDL_RenderDrawPoint(disp.renderer, x - cx, y + cy);
+            SDL_RenderDrawPoint(disp.renderer, x + cx, y - cy);
+            SDL_RenderDrawPoint(disp.renderer, x - cx, y - cy);
+            SDL_RenderDrawPoint(disp.renderer, x + cy, y + cx);
+            SDL_RenderDrawPoint(disp.renderer, x - cy, y + cx);
+            SDL_RenderDrawPoint(disp.renderer, x + cy, y - cx);
+            SDL_RenderDrawPoint(disp.renderer, x - cy, y - cx);
+
+            if (error <= 0) {
+                cy++;
+                error += 2 * cy + 1;
+            } else {
+                cx--;
+                cy++;
+                error += 2 * (cy - cx) + 1;
+            }
+        }
+    }
+
+}
+
+/**
  * @brief Render Drawn Items.
  * 
- * @paragraph p1 Use this once your done drawing your stuff to display the changes.
+ * @paragraph p1zxc Use this once your done drawing your stuff to display the changes.
 */
 void RenderScreen(Display disp) {
     ProbeEvents(disp);
     SDL_RenderPresent(disp.renderer);
 }
 
-// Add more drawing functions as needed
-
-#else // dummy
-#include <stdio.h>
-#include <stdbool.h>
-#include "video.h"
-#include "threading.h"
-
-// Declare global variables for the window and renderer
-void ProbeEvents(Display disp)
-{
-    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
+/**
+ * @brief Clearing the screen.
+ * 
+ * @paragraph clscrnp1 Use this when you want to clear your display.
+*/
+void ClearScreen(Display disp) {
+    SDL_SetRenderDrawColor(disp.renderer, 0, 0, 0, 255);
+    SDL_RenderClear(disp.renderer);
 }
-Display InitVideo(int width, int height) {
-    Display disp;
-    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
-    return disp;
-}
-void QuitVideo(Display disp) {
-    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
-}
-void DrawRect(Display disp, int x, int y, int width, int height, int r, int g, int b, bool fill) {
-    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
-}
-void RenderScreen(Display disp) {
-    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
-}
-#endif
 
 #endif
 

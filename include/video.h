@@ -6,9 +6,6 @@
 // Only compile if USE_VIDEO defined.
 #ifdef USE_VIDEO
 
-// Linux Video.
-#ifdef BUILD_LINUX
-
 // SDL2.
 #ifdef VIDEO_SDL2
 
@@ -19,29 +16,39 @@
 typedef struct {
     SDL_Window* window;
     SDL_Renderer* renderer;
+    int width;
+    int height;
 } Display;
 
 Display InitVideo(int width, int height);
 void QuitVideo(Display disp);
 void DrawRect(Display disp, int x, int y, int width, int height, Uint8 r, Uint8 g, Uint8 b, bool fill);
 void RenderScreen(Display disp);
+void DrawCircle(Display disp, int x, int y, int rad, Uint8 r, Uint8 g, Uint8 b, bool fill);
+void ClearScreen(Display disp);
 
-#else // dummy
+#endif
+
+#ifdef VIDEO_DUMMY // dummy
 
 #include <stdio.h>
 #include <stdbool.h>
 
+typedef unsigned char Uint8;
+
 typedef struct {
     void* window;
     void* renderer;
+    int width;
+    int height;
 } Display;
 
 Display InitVideo(int width, int height);
 void QuitVideo(Display disp);
 void DrawRect(Display disp, int x, int y, int width, int height, int r, int g, int b, bool fill);
 void RenderScreen(Display disp);
-
-#endif
+void DrawCircle(Display disp, int x, int y, int rad, Uint8 r, Uint8 g, Uint8 b, bool fill);
+void ClearScreen(Display disp);
 
 #endif
 

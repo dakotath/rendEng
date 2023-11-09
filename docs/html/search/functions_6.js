@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['waitforthread_0',['WaitForThread',['../threading_8c.html#aabb5c0887cb42caf305f944bd523cf9e',1,'threading.c']]]
+  ['startthread_0',['StartThread',['../threading_8c.html#a4371b73c3feb96a4c1984837a9ff9517',1,'threading.c']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['startthread_0',['StartThread',['../threading_8c.html#a4371b73c3feb96a4c1984837a9ff9517',1,'threading.c']]]
+  ['renderscreen_0',['RenderScreen',['../video_8c.html#a34c8b6e89254ec7a6af76d55a1e574d3',1,'video.c']]]
 ];
