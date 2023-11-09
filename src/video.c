@@ -135,24 +135,29 @@ void RenderScreen(Display disp) {
 // Add more drawing functions as needed
 
 #else // dummy
+#include <stdio.h>
+#include <stdbool.h>
+#include "video.h"
+#include "threading.h"
+
 // Declare global variables for the window and renderer
 void ProbeEvents(Display disp)
 {
-    printf("Oh no, %s is not implemented for %s. %s line %d.\n". __FUNCTION__, TARGET, __FILE__, __LINE__);
+    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
 }
 Display InitVideo(int width, int height) {
     Display disp;
-    printf("Oh no, %s is not implemented for %s. %s line %d.\n". __FUNCTION__, TARGET, __FILE__, __LINE__);
+    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
     return disp;
 }
 void QuitVideo(Display disp) {
-    printf("Oh no, %s is not implemented for %s. %s line %d.\n". __FUNCTION__, TARGET, __FILE__, __LINE__);
+    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
 }
 void DrawRect(Display disp, int x, int y, int width, int height, int r, int g, int b, bool fill) {
-    printf("Oh no, %s is not implemented for %s. %s line %d.\n". __FUNCTION__, TARGET, __FILE__, __LINE__);
+    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
 }
 void RenderScreen(Display disp) {
-    printf("Oh no, %s is not implemented for %s. %s line %d.\n". __FUNCTION__, TARGET, __FILE__, __LINE__);
+    printf("Oh no, %s is not implemented for %s. %s line %d.\n", __FUNCTION__, TARGET, __FILE__, __LINE__);
 }
 #endif
 

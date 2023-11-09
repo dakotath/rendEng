@@ -22,6 +22,6 @@ const char* TARGET = "Unknown or unsupported target architecture";
 // config for different functions
 #define USE_THREADING
 #define USE_VIDEO
-#define VIDEO_SDL2
+//#define VIDEO_SDL2
 
 #endif
