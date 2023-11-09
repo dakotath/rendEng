@@ -148,7 +148,7 @@ Display InitVideo(int width, int height) {
 void QuitVideo(Display disp) {
     printf("Oh no, %s is not implemented for %s. %s line %d.\n". __FUNCTION__, TARGET, __FILE__, __LINE__);
 }
-void DrawRect(Display disp, int x, int y, int width, int height, Uint8 r, Uint8 g, Uint8 b, bool fill) {
+void DrawRect(Display disp, int x, int y, int width, int height, int r, int g, int b, bool fill) {
     printf("Oh no, %s is not implemented for %s. %s line %d.\n". __FUNCTION__, TARGET, __FILE__, __LINE__);
 }
 void RenderScreen(Display disp) {

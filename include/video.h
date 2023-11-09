@@ -38,7 +38,7 @@ typedef struct {
 
 Display InitVideo(int width, int height);
 void QuitVideo(Display disp);
-void DrawRect(Display disp, int x, int y, int width, int height, Uint8 r, Uint8 g, Uint8 b, bool fill);
+void DrawRect(Display disp, int x, int y, int width, int height, int r, int g, int b, bool fill);
 void RenderScreen(Display disp);
 
 #endif
