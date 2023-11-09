@@ -3,6 +3,7 @@
         "windows.h": "c",
         "threading.h": "c",
         "functional": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "stdlib.h": "c"
     }
 }
