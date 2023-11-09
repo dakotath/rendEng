@@ -1,0 +1,98 @@
+\hypertarget{video_8c}{}\doxysection{src/video.c File Reference}
+\label{video_8c}\index{src/video.c@{src/video.c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}video.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}threading.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{video_8c_ab1e848bb749deee255d018a71639829f}\label{video_8c_ab1e848bb749deee255d018a71639829f}} 
+void {\bfseries Probe\+Events} (\mbox{\hyperlink{structDisplay}{Display}} disp)
+\item 
+\mbox{\hyperlink{structDisplay}{Display}} \mbox{\hyperlink{video_8c_aee2465e91a148eff098f3dfb147428f1}{Init\+Video}} (int width, int height)
+\begin{DoxyCompactList}\small\item\em Init Video. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8c_af90fe60f50246880ddadb8984f279fa4}{Quit\+Video}} (\mbox{\hyperlink{structDisplay}{Display}} disp)
+\begin{DoxyCompactList}\small\item\em Quit Video. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8c_aa72da9ef978a1d7bbbaae8a7521b3301}{Draw\+Rect}} (\mbox{\hyperlink{structDisplay}{Display}} disp, int x, int y, int width, int height, Uint8 r, Uint8 g, Uint8 b, bool fill)
+\begin{DoxyCompactList}\small\item\em Draw Rectangles. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8c_a34c8b6e89254ec7a6af76d55a1e574d3}{Render\+Screen}} (\mbox{\hyperlink{structDisplay}{Display}} disp)
+\begin{DoxyCompactList}\small\item\em Render Drawn Items. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+All 2D rendering handlers. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{video_8c_aa72da9ef978a1d7bbbaae8a7521b3301}\label{video_8c_aa72da9ef978a1d7bbbaae8a7521b3301}} 
+\index{video.c@{video.c}!DrawRect@{DrawRect}}
+\index{DrawRect@{DrawRect}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{DrawRect()}{DrawRect()}}
+{\footnotesize\ttfamily void Draw\+Rect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDisplay}{Display}}}]{disp,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{Uint8}]{r,  }\item[{Uint8}]{g,  }\item[{Uint8}]{b,  }\item[{bool}]{fill }\end{DoxyParamCaption})}
+
+
+
+Draw Rectangles. 
+
+\hypertarget{video_8c_p1}{}\doxysubparagraph{The Thread\+Info structure.}\label{video_8c_p1}
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X Position of your Rectangle. \\
+\hline
+{\em y} & Y Position of your Rectangle. \\
+\hline
+{\em width} & Width of the Rectangle. \\
+\hline
+{\em height} & Height of the Rectangle.\\
+\hline
+{\em r} & Red Amount (0-\/255). \\
+\hline
+{\em g} & Green Amount (0-\/255). \\
+\hline
+{\em b} & Blue Amount (0-\/255).\\
+\hline
+{\em fill} & Option to fill your Rectangle. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{video_8c_aee2465e91a148eff098f3dfb147428f1}\label{video_8c_aee2465e91a148eff098f3dfb147428f1}} 
+\index{video.c@{video.c}!InitVideo@{InitVideo}}
+\index{InitVideo@{InitVideo}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{InitVideo()}{InitVideo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structDisplay}{Display}} Init\+Video (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+Init Video. 
+
+\hypertarget{video_8c_p1}{}\doxysubparagraph{The Thread\+Info structure.}\label{video_8c_p1}
+
+\begin{DoxyParams}{Parameters}
+{\em width} & Screen Width. \\
+\hline
+{\em height} & Screen Height. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{video_8c_af90fe60f50246880ddadb8984f279fa4}\label{video_8c_af90fe60f50246880ddadb8984f279fa4}} 
+\index{video.c@{video.c}!QuitVideo@{QuitVideo}}
+\index{QuitVideo@{QuitVideo}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{QuitVideo()}{QuitVideo()}}
+{\footnotesize\ttfamily void Quit\+Video (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDisplay}{Display}}}]{disp }\end{DoxyParamCaption})}
+
+
+
+Quit Video. 
+
+\hypertarget{video_8c_p1}{}\doxysubparagraph{The Thread\+Info structure.}\label{video_8c_p1}
+\mbox{\Hypertarget{video_8c_a34c8b6e89254ec7a6af76d55a1e574d3}\label{video_8c_a34c8b6e89254ec7a6af76d55a1e574d3}} 
+\index{video.c@{video.c}!RenderScreen@{RenderScreen}}
+\index{RenderScreen@{RenderScreen}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{RenderScreen()}{RenderScreen()}}
+{\footnotesize\ttfamily void Render\+Screen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDisplay}{Display}}}]{disp }\end{DoxyParamCaption})}
+
+
+
+Render Drawn Items. 
+
+\hypertarget{video_8c_p1}{}\doxysubparagraph{The Thread\+Info structure.}\label{video_8c_p1}

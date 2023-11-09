@@ -1,0 +1,85 @@
+\hypertarget{threading_8h_source}{}\doxysection{threading.\+h}
+\label{threading_8h_source}\index{include/threading.h@{include/threading.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef THREADING\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define THREADING\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}config.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{// threading.h 2023 Dakota Thorpe}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#ifdef USE\_THREADING}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{// Windows MINGW}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#ifdef BUILD\_MINGW}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <windows.h>}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define ThreadFunction DWORD WINAPI}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define ThreadParams LPVOID}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define udelay(ms) Sleep(ms)}}
+\DoxyCodeLine{19 \textcolor{comment}{}}
+\DoxyCodeLine{20 \textcolor{comment}{/**}}
+\DoxyCodeLine{21 \textcolor{comment}{ * @brief ThreadInfo structure.}}
+\DoxyCodeLine{22 \textcolor{comment}{ * @paragraph p1 The ThreadInfo structure.}}
+\DoxyCodeLine{23 \textcolor{comment}{ * }}
+\DoxyCodeLine{24 \textcolor{comment}{ * @param func The thread function.}}
+\DoxyCodeLine{25 \textcolor{comment}{ * @param params Parameters for threads}}
+\DoxyCodeLine{26 \textcolor{comment}{ * @param threadHandle A controlable thread handle.}}
+\DoxyCodeLine{27 \textcolor{comment}{*/}}
+\DoxyCodeLine{28 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{29     ThreadFunction func; \textcolor{comment}{/* Thread Function */}}
+\DoxyCodeLine{30     ThreadParams params; \textcolor{comment}{/* Thread parameters */}}
+\DoxyCodeLine{31     HANDLE threadHandle; \textcolor{comment}{/* The handle for the thread. */}}
+\DoxyCodeLine{32 \} \mbox{\hyperlink{structThreadInfo}{ThreadInfo}};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#elif defined BUILD\_LINUX }\textcolor{comment}{// Linux}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include <pthread.h>}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{keyword}{typedef} \textcolor{keywordtype}{void}* ThreadFunction;}
+\DoxyCodeLine{39 \textcolor{keyword}{typedef} \textcolor{keywordtype}{void}* ThreadParams;}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define udelay(ms) usleep(ms * 1000)}}
+\DoxyCodeLine{42 \textcolor{comment}{}}
+\DoxyCodeLine{43 \textcolor{comment}{/**}}
+\DoxyCodeLine{44 \textcolor{comment}{ * @brief ThreadInfo structure.}}
+\DoxyCodeLine{45 \textcolor{comment}{ * @paragraph p1 The ThreadInfo structure.}}
+\DoxyCodeLine{46 \textcolor{comment}{ * }}
+\DoxyCodeLine{47 \textcolor{comment}{ * @param func The thread function.}}
+\DoxyCodeLine{48 \textcolor{comment}{ * @param params Parameters for threads}}
+\DoxyCodeLine{49 \textcolor{comment}{ * @param threadHandle A controllable thread handle.}}
+\DoxyCodeLine{50 \textcolor{comment}{ */}}
+\DoxyCodeLine{51 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{52     ThreadFunction func; \textcolor{comment}{/* Thread Function */}}
+\DoxyCodeLine{53     ThreadParams params; \textcolor{comment}{/* Thread parameters */}}
+\DoxyCodeLine{54     pthread\_t threadHandle; \textcolor{comment}{/* The handle for the thread. */}}
+\DoxyCodeLine{55 \} \mbox{\hyperlink{structThreadInfo}{ThreadInfo}};}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#else }\textcolor{comment}{// Dummy}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{keyword}{typedef} \textcolor{keywordtype}{void}* ThreadFunction;}
+\DoxyCodeLine{60 \textcolor{keyword}{typedef} \textcolor{keywordtype}{void}* ThreadParams;}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define udelay(ms) usleep(ms * 1000)}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{65     ThreadFunction func;}
+\DoxyCodeLine{66     ThreadParams params;}
+\DoxyCodeLine{67     \textcolor{keywordtype}{int} threadHandle;}
+\DoxyCodeLine{68 \} \mbox{\hyperlink{structThreadInfo}{ThreadInfo}};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \mbox{\hyperlink{structThreadInfo}{ThreadInfo}} *\mbox{\hyperlink{threading_8c_abbab69c0dfd03927b83454db2cd5b7d7}{InitThread}}(ThreadFunction func, ThreadParams params);}
+\DoxyCodeLine{73 \textcolor{keywordtype}{void} \mbox{\hyperlink{threading_8c_a4371b73c3feb96a4c1984837a9ff9517}{StartThread}}(\mbox{\hyperlink{structThreadInfo}{ThreadInfo}}* thread);}
+\DoxyCodeLine{74 \textcolor{keywordtype}{void} \mbox{\hyperlink{threading_8c_aabb5c0887cb42caf305f944bd523cf9e}{WaitForThread}}(\mbox{\hyperlink{structThreadInfo}{ThreadInfo}}* thread);}
+\DoxyCodeLine{75 \textcolor{keywordtype}{void} \mbox{\hyperlink{threading_8c_aa1ffae3e08b49a2b5a18c559efa7d4d4}{DestroyThread}}(\mbox{\hyperlink{structThreadInfo}{ThreadInfo}}* thread);}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

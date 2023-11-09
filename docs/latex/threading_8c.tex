@@ -1,0 +1,88 @@
+\hypertarget{threading_8c}{}\doxysection{src/threading.c File Reference}
+\label{threading_8c}\index{src/threading.c@{src/threading.c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}threading.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structThreadInfo}{Thread\+Info}} $\ast$ \mbox{\hyperlink{threading_8c_abbab69c0dfd03927b83454db2cd5b7d7}{Init\+Thread}} (Thread\+Function func, Thread\+Params params)
+\begin{DoxyCompactList}\small\item\em Thread Information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{threading_8c_a4371b73c3feb96a4c1984837a9ff9517}{Start\+Thread}} (\mbox{\hyperlink{structThreadInfo}{Thread\+Info}} $\ast$thread)
+\begin{DoxyCompactList}\small\item\em Starting Threads. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{threading_8c_aabb5c0887cb42caf305f944bd523cf9e}{Wait\+For\+Thread}} (\mbox{\hyperlink{structThreadInfo}{Thread\+Info}} $\ast$thread)
+\begin{DoxyCompactList}\small\item\em Waiting For Threads to Finish. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{threading_8c_aa1ffae3e08b49a2b5a18c559efa7d4d4}{Destroy\+Thread}} (\mbox{\hyperlink{structThreadInfo}{Thread\+Info}} $\ast$thread)
+\begin{DoxyCompactList}\small\item\em Destroying Threads. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the implementation of the threading module. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{threading_8c_aa1ffae3e08b49a2b5a18c559efa7d4d4}\label{threading_8c_aa1ffae3e08b49a2b5a18c559efa7d4d4}} 
+\index{threading.c@{threading.c}!DestroyThread@{DestroyThread}}
+\index{DestroyThread@{DestroyThread}!threading.c@{threading.c}}
+\doxysubsubsection{\texorpdfstring{DestroyThread()}{DestroyThread()}}
+{\footnotesize\ttfamily void Destroy\+Thread (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structThreadInfo}{Thread\+Info}} $\ast$}]{thread }\end{DoxyParamCaption})}
+
+
+
+Destroying Threads. 
+
+\hypertarget{video_8c_p1}{}\doxysubparagraph{The Thread\+Info structure.}\label{video_8c_p1}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$thread} & The thread you want to clear. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{threading_8c_abbab69c0dfd03927b83454db2cd5b7d7}\label{threading_8c_abbab69c0dfd03927b83454db2cd5b7d7}} 
+\index{threading.c@{threading.c}!InitThread@{InitThread}}
+\index{InitThread@{InitThread}!threading.c@{threading.c}}
+\doxysubsubsection{\texorpdfstring{InitThread()}{InitThread()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structThreadInfo}{Thread\+Info}} $\ast$ Init\+Thread (\begin{DoxyParamCaption}\item[{Thread\+Function}]{func,  }\item[{Thread\+Params}]{params }\end{DoxyParamCaption})}
+
+
+
+Thread Information. 
+
+\hypertarget{video_8c_p1}{}\doxysubparagraph{The Thread\+Info structure.}\label{video_8c_p1}
+
+\begin{DoxyParams}{Parameters}
+{\em func} & The function of the thread you are initializing \\
+\hline
+{\em params} & Any parameters you need to pass to the thread function (Leave NULL if unused). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{threading_8c_a4371b73c3feb96a4c1984837a9ff9517}\label{threading_8c_a4371b73c3feb96a4c1984837a9ff9517}} 
+\index{threading.c@{threading.c}!StartThread@{StartThread}}
+\index{StartThread@{StartThread}!threading.c@{threading.c}}
+\doxysubsubsection{\texorpdfstring{StartThread()}{StartThread()}}
+{\footnotesize\ttfamily void Start\+Thread (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structThreadInfo}{Thread\+Info}} $\ast$}]{thread }\end{DoxyParamCaption})}
+
+
+
+Starting Threads. 
+
+\hypertarget{video_8c_p1}{}\doxysubparagraph{The Thread\+Info structure.}\label{video_8c_p1}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$thread} & A \mbox{\hyperlink{structThreadInfo}{Thread\+Info}} that can be created with \mbox{\hyperlink{threading_8c_abbab69c0dfd03927b83454db2cd5b7d7}{Init\+Thread()}}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{threading_8c_aabb5c0887cb42caf305f944bd523cf9e}\label{threading_8c_aabb5c0887cb42caf305f944bd523cf9e}} 
+\index{threading.c@{threading.c}!WaitForThread@{WaitForThread}}
+\index{WaitForThread@{WaitForThread}!threading.c@{threading.c}}
+\doxysubsubsection{\texorpdfstring{WaitForThread()}{WaitForThread()}}
+{\footnotesize\ttfamily void Wait\+For\+Thread (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structThreadInfo}{Thread\+Info}} $\ast$}]{thread }\end{DoxyParamCaption})}
+
+
+
+Waiting For Threads to Finish. 
+
+\hypertarget{video_8c_p1}{}\doxysubparagraph{The Thread\+Info structure.}\label{video_8c_p1}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$thread} & A \mbox{\hyperlink{structThreadInfo}{Thread\+Info}} that can be created with \mbox{\hyperlink{threading_8c_abbab69c0dfd03927b83454db2cd5b7d7}{Init\+Thread()}}. \\
+\hline
+\end{DoxyParams}
