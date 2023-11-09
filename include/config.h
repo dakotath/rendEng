@@ -3,15 +3,15 @@
 #define CONFIG_H
 
 #ifdef __i386__
-const char* TARGET = "x86 (32-bit)";
+#define TARGET = "x86 (32-bit)";
 #elif defined(__x86_64__)
-const char* TARGET = "x86_64 (64-bit)";
+#define TARGET = "x86_64 (64-bit)";
 #elif defined(__powerpc__)
-const char* TARGET = "PowerPC";
+#define TARGET = "PowerPC";
 #elif defined(__mips__)
-const char* TARGET = "MIPS";
+#define TARGET = "MIPS";
 #else
-const char* TARGET = "Unknown or unsupported target architecture";
+#define TARGET = "Unknown or unsupported target architecture";
 #endif
 
 // Version
