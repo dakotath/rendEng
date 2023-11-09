@@ -97,13 +97,28 @@ $(function() {
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">void</span> <a class="code hl_function" href="video_8c.html#aa72da9ef978a1d7bbbaae8a7521b3301">DrawRect</a>(<a class="code hl_struct" href="structDisplay.html">Display</a> disp, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height, Uint8 r, Uint8 g, Uint8 b, <span class="keywordtype">bool</span> fill);</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keywordtype">void</span> <a class="code hl_function" href="video_8c.html#a34c8b6e89254ec7a6af76d55a1e574d3">RenderScreen</a>(<a class="code hl_struct" href="structDisplay.html">Display</a> disp);</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#else </span><span class="comment">// dummy</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span>* window;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span>* renderer;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>} <a class="code hl_struct" href="structDisplay.html">Display</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><a class="code hl_struct" href="structDisplay.html">Display</a> <a class="code hl_function" href="video_8c.html#aee2465e91a148eff098f3dfb147428f1">InitVideo</a>(<span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">void</span> <a class="code hl_function" href="video_8c.html#af90fe60f50246880ddadb8984f279fa4">QuitVideo</a>(<a class="code hl_struct" href="structDisplay.html">Display</a> disp);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keywordtype">void</span> <a class="code hl_function" href="video_8c.html#aa72da9ef978a1d7bbbaae8a7521b3301">DrawRect</a>(<a class="code hl_struct" href="structDisplay.html">Display</a> disp, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height, Uint8 r, Uint8 g, Uint8 b, <span class="keywordtype">bool</span> fill);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keywordtype">void</span> <a class="code hl_function" href="video_8c.html#a34c8b6e89254ec7a6af76d55a1e574d3">RenderScreen</a>(<a class="code hl_struct" href="structDisplay.html">Display</a> disp);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="astructDisplay_html"><div class="ttname"><a href="structDisplay.html">Display</a></div><div class="ttdef"><b>Definition:</b> video.h:19</div></div>
 <div class="ttc" id="avideo_8c_html_a34c8b6e89254ec7a6af76d55a1e574d3"><div class="ttname"><a href="video_8c.html#a34c8b6e89254ec7a6af76d55a1e574d3">RenderScreen</a></div><div class="ttdeci">void RenderScreen(Display disp)</div><div class="ttdoc">Render Drawn Items.</div><div class="ttdef"><b>Definition:</b> video.c:130</div></div>
 <div class="ttc" id="avideo_8c_html_aa72da9ef978a1d7bbbaae8a7521b3301"><div class="ttname"><a href="video_8c.html#aa72da9ef978a1d7bbbaae8a7521b3301">DrawRect</a></div><div class="ttdeci">void DrawRect(Display disp, int x, int y, int width, int height, Uint8 r, Uint8 g, Uint8 b, bool fill)</div><div class="ttdoc">Draw Rectangles.</div><div class="ttdef"><b>Definition:</b> video.c:111</div></div>

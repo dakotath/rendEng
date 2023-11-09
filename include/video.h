@@ -26,6 +26,21 @@ void QuitVideo(Display disp);
 void DrawRect(Display disp, int x, int y, int width, int height, Uint8 r, Uint8 g, Uint8 b, bool fill);
 void RenderScreen(Display disp);
 
+#else // dummy
+
+#include <stdio.h>
+#include <stdbool.h>
+
+typedef struct {
+    void* window;
+    void* renderer;
+} Display;
+
+Display InitVideo(int width, int height);
+void QuitVideo(Display disp);
+void DrawRect(Display disp, int x, int y, int width, int height, Uint8 r, Uint8 g, Uint8 b, bool fill);
+void RenderScreen(Display disp);
+
 #endif
 
 #endif

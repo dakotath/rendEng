@@ -6,16 +6,28 @@
 \DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef CONFIG\_H}}
 \DoxyCodeLine{3 \textcolor{preprocessor}{\#define CONFIG\_H}}
 \DoxyCodeLine{4 }
-\DoxyCodeLine{5 \textcolor{comment}{// Version}}
-\DoxyCodeLine{6 \textcolor{preprocessor}{\#define VERSION "{}CoreRend Version 1.0.0"{}}}
-\DoxyCodeLine{7 }
-\DoxyCodeLine{8 \textcolor{preprocessor}{\#define BUILD\_LINUX }\textcolor{comment}{// build for LINUX}}
-\DoxyCodeLine{9 }
-\DoxyCodeLine{10 \textcolor{comment}{// config for different functions}}
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#define USE\_THREADING}}
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#define USE\_VIDEO}}
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#define VIDEO\_SDL2}}
-\DoxyCodeLine{14 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifdef \_\_i386\_\_}}
+\DoxyCodeLine{6 \textcolor{keyword}{const} \textcolor{keywordtype}{char}* TARGET = \textcolor{stringliteral}{"{}x86 (32-\/bit)"{}};}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#elif defined(\_\_x86\_64\_\_)}}
+\DoxyCodeLine{8 \textcolor{keyword}{const} \textcolor{keywordtype}{char}* TARGET = \textcolor{stringliteral}{"{}x86\_64 (64-\/bit)"{}};}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#elif defined(\_\_powerpc\_\_)}}
+\DoxyCodeLine{10 \textcolor{keyword}{const} \textcolor{keywordtype}{char}* TARGET = \textcolor{stringliteral}{"{}PowerPC"{}};}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#elif defined(\_\_mips\_\_)}}
+\DoxyCodeLine{12 \textcolor{keyword}{const} \textcolor{keywordtype}{char}* TARGET = \textcolor{stringliteral}{"{}MIPS"{}};}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{14 \textcolor{keyword}{const} \textcolor{keywordtype}{char}* TARGET = \textcolor{stringliteral}{"{}Unknown or unsupported target architecture"{}};}
 \DoxyCodeLine{15 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{comment}{// Version}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define VERSION "{}CoreRend Version 1.0.0"{}}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define BUILD\_LINUX }\textcolor{comment}{// build for LINUX}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{comment}{// config for different functions}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define USE\_THREADING}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define USE\_VIDEO}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define VIDEO\_SDL2}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
