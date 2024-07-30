@@ -1,5 +1,5 @@
-./*.zip
-./otherLibs
-./lib
-./build*
-./bin
+*.zip
+otherLibs
+lib
+build*
+bin
