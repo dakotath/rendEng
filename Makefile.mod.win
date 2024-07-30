@@ -1,0 +1,30 @@
+# Compiler and flags
+CC = gcc
+CFLAGS = -Iinclude -Wall -DBUILD_MINGW
+
+# Directories
+SRC_DIR = src
+BUILD_DIR = build
+BIN_DIR = bin
+
+# Source files (add more as needed)
+SRCS = $(wildcard $(SRC_DIR)/*.c)
+OBJS = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRCS))
+TARGET = $(BIN_DIR)/my_program
+
+# Default target (build the binary)
+all: $(TARGET)
+
+# Link the binary from object files
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $^ -o $@ -Llib -lm
+
+# Compile source files into object files
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Clean compiled files
+clean:
+	rm -rf $(BUILD_DIR) $(BIN_DIR)
+
+.PHONY: all clean

@@ -11,9 +11,14 @@
 #include "threading.h"
 
 #ifdef BUILD_MINGW
-#include <windows.h>
+#include <windows.h> // Windows
 #elif defined BUILD_LINUX // Linux
 #include <pthread.h>
+#elif defined BUILD_WII // Wii
+
+#include <gccore.h>
+#include <ogcsys.h>
+
 #endif
 
 /**
@@ -41,6 +46,8 @@ ThreadInfo *InitThread(ThreadFunction func, ThreadParams params) {
         free(thread);
         return NULL;
     }
+#elif defined BUILD_WII
+    LWP_CreateThread(&thread->threadHandle, func, NULL, NULL, 0, 80);
 #endif
 
     return thread;
@@ -59,6 +66,8 @@ void StartThread(ThreadInfo* thread) {
     }
 #elif defined BUILD_LINUX // Linux
     // Add Linux-specific thread starting code here
+#elif defined BUILD_WII
+    LWP_ResumeThread(thread->threadHandle);
 #endif
 }
 
@@ -75,6 +84,11 @@ void WaitForThread(ThreadInfo* thread) {
     }
 #elif defined BUILD_LINUX // Linux
     if (pthread_join(thread->threadHandle, NULL) != 0) {
+        printf("Failed to join the thread.\n");
+    }
+#elif defined BUILD_WII // Wii
+    if(LWP_JoinThread(thread->threadHandle, NULL) != 0)
+    {
         printf("Failed to join the thread.\n");
     }
 #endif

@@ -54,6 +54,21 @@ typedef struct {
     pthread_t threadHandle; /* The handle for the thread. */
 } ThreadInfo;
 
+#elif defined BUILD_WII // Nintendo Wii
+
+#include <gccore.h>
+
+typedef void* ThreadFunction;
+typedef void* ThreadParams;
+
+#define udelay(ms) usleep(ms * 1000)
+
+typedef struct {
+    ThreadFunction func;
+    ThreadParams params;
+    lwp_t threadHandle;
+} ThreadInfo;
+
 #else // Dummy
 
 typedef void* ThreadFunction;

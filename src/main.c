@@ -4,7 +4,10 @@
 #include "threading.h"
 #include "video.h"
 
+//#include "font_ttf.h"
+
 Display disp;
+TrueTypeFont font;
 
 ThreadFunction testThread1(ThreadParams params) {
     while (1)
@@ -29,9 +32,9 @@ ThreadFunction mainThread(ThreadParams params) {
 }
 
 ThreadFunction rendererThread(ThreadParams params) {
-    int ballX = 2;
-    int ballY = 3;
-    int ballRadius = 3;
+    int ballX = 10;
+    int ballY = 10;
+    int ballRadius = 2;
     int ballSpeedX = 3;
     int ballSpeedY = 2;
 
@@ -53,6 +56,9 @@ ThreadFunction rendererThread(ThreadParams params) {
             ballSpeedY = -ballSpeedY; // Reverse Y direction
         }
 
+        // Render text.
+        PrintfTTF(0,0, font, "CoreLib Test Application.", 0,0,0,255);
+
         // Render the ball
         DrawCircle(disp, ballX, ballY, ballRadius, 0, 0, 255, true);
 
@@ -60,7 +66,7 @@ ThreadFunction rendererThread(ThreadParams params) {
         RenderScreen(disp);
 
         // Delay for animation
-        udelay(10);
+        udelay(1);
     }
 
     return NULL;
@@ -73,24 +79,26 @@ int main(int argc, char** argv) {
     // print core info
     printCoreInfo();
 
-    // init video
-    int screenW = 100;
-    int screenH = 100;
+    // init video 
+    int screenW = 30;
+    int screenH = 30;
+
     disp = InitVideo(screenW, screenH);
+    //font = LoadTTF(font_ttf, font_ttf_size, 20);
 
     // setup thread infos
     ThreadParams testT1Params = NULL;
-    ThreadInfo *testT1Info = InitThread(testThread1, testT1Params);
-    ThreadInfo *mainThreadInfo = InitThread(mainThread, testT1Params);
+    //ThreadInfo *testT1Info = InitThread(testThread1, testT1Params);
+    //ThreadInfo *mainThreadInfo = InitThread(mainThread, testT1Params);
     ThreadInfo *renderThreadInfo = InitThread(rendererThread, NULL);
 
     // start it
-    StartThread(testT1Info);
-    StartThread(mainThreadInfo);
+    //StartThread(testT1Info);
+    //StartThread(mainThreadInfo);
     StartThread(renderThreadInfo);
 
     // Wait for our main thread to stop
-    WaitForThread(mainThreadInfo);
+    WaitForThread(renderThreadInfo);
 
     return 0;
 }
