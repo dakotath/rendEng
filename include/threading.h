@@ -33,6 +33,7 @@ typedef struct {
 
 #elif defined BUILD_LINUX // Linux
 
+#include <unistd.h>
 #include <pthread.h>
 
 typedef void* ThreadFunction;
