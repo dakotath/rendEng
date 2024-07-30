@@ -1,6 +1,6 @@
 # Compiler and flags
 CC = gcc
-CFLAGS = -Iinclude -Wall -DBUILD_LINUX
+CFLAGS = -Iinclude -Wall
 
 # Directories
 SRC_DIR = src

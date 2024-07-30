@@ -35,6 +35,9 @@ void RenderScreen(Display disp);
 void DrawCircle(Display disp, int x, int y, int rad, Uint8 r, Uint8 g, Uint8 b, bool fill);
 void ClearScreen(Display disp);
 
+TrueTypeFont LoadTTF(void* data, uint64_t size, int fontSize);
+void PrintfTTF(int x, int y, TrueTypeFont font, char* text, int r, int g, int b, int a);
+
 #endif
 
 #ifdef VIDEO_WII

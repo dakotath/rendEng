@@ -13,6 +13,7 @@
 #ifdef BUILD_MINGW
 #include <windows.h> // Windows
 #elif defined BUILD_LINUX // Linux
+#include <stdlib.h>
 #include <pthread.h>
 #elif defined BUILD_WII // Wii
 
